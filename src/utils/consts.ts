@@ -1,0 +1,6 @@
+export const FAVORITES_ROUTE = '/favorites'
+export const HISTORY_ROUTE = '/history'
+export const SIGNIN_ROUTE = '/signin'
+export const SIGNUP_ROUTE = '/signup'
+export const COCKTAIL_ROUTE = '/cocktail'
+export const NOTFOUND_ROUTE = '*'
