@@ -1,0 +1,42 @@
+@import '../../variables';
+
+.btn {
+  width: fit-content;
+  display: inline-block;
+  background: none;
+  border-radius: $br;
+  border: $border;
+  color: $black;
+  font-weight: 700;
+  cursor: pointer;
+
+  &:hover {
+    letter-spacing: 2px;
+  }
+
+  &--small {
+    height: 4rem;
+    padding: 4px 14px;
+    font-size: 1.6rem;
+  }
+
+  &--medium {
+    padding: 8px 20px;
+    font-size: 2rem;
+  }
+
+  &--large {
+    padding: 16px 26px;
+    font-size: 2rem;
+  }
+
+  &--white {
+    background: $white;
+    color: $black;
+    border: none;
+
+    &:hover {
+      letter-spacing: 2px;
+    }
+  }
+}
