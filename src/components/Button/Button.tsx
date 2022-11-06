@@ -1,34 +1,30 @@
 import { DOMAttributes } from 'react'
 import PropTypes from 'prop-types'
+import './Button.scss'
 
 export type ButtonType = 'button' | 'reset' | 'submit'
 
 export interface Props extends DOMAttributes<HTMLButtonElement> {
   children: React.ReactNode
-  type: ButtonType
-  onClick: (event: React.MouseEvent) => void
-  buttonSize: string
-  buttonColor: string
+  type?: ButtonType
+  onClick?: (event: React.MouseEvent) => void
+  size?: string
+  color?: string
 }
 
-const SIZES = ['btn--medium', 'btn--large', 'btn--small']
-const COLORS = ['btn--black', 'btn--white']
+const DEFAULT_SIZE = 'btn--medium'
+const DEFAULT_COLOR = 'btn--black'
 
-export const Button = ({
-  children,
-  type,
-  onClick,
-  buttonSize,
-  buttonColor,
-}: Props) => {
-  const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0]
-  const checkButtonColor = COLORS.includes(buttonColor)
-    ? buttonColor
-    : COLORS[0]
+const SIZES = { medium: DEFAULT_SIZE, large: 'btn--large', small: 'btn--small' }
+const COLORS = { black: DEFAULT_COLOR, white: 'btn--white' }
+
+export const Button = ({ children, type, onClick, size, color }: Props) => {
+  const sizeClass = SIZES[size as keyof typeof SIZES] && DEFAULT_SIZE
+  const colorClass = COLORS[color as keyof typeof COLORS] && DEFAULT_COLOR
 
   return (
     <button
-      className={`btn ${checkButtonSize} ${checkButtonColor}`}
+      className={`btn ${sizeClass} ${colorClass}`}
       onClick={onClick}
       type={type}
     >
@@ -41,14 +37,6 @@ Button.propTypes = {
   children: PropTypes.node.isRequired,
   type: PropTypes.string.isRequired,
   onClick: PropTypes.func,
-  buttonSize: PropTypes.string,
-  buttonColor: PropTypes.string,
-}
-
-Button.defaultProps = {
-  children: 'Default button',
-  type: 'button',
-  onClick: () => {},
-  buttonSize: 'btn--medium',
-  buttonColor: 'btn--black',
+  size: PropTypes.string,
+  color: PropTypes.string,
 }
