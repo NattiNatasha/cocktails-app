@@ -11,10 +11,17 @@ export interface Props extends InputHTMLAttributes<HTMLInputElement> {
   onChange?: React.FormEventHandler<HTMLInputElement>
 }
 
-export const Input = ({ required, placeholder, type, value, className, onChange }: Props) => {
+export const Input = ({
+  required,
+  placeholder,
+  type,
+  value,
+  className,
+  onChange,
+}: Props) => {
   return (
     <input
-      required = {required}
+      required={required}
       placeholder={placeholder}
       type={type}
       value={value}
@@ -25,10 +32,10 @@ export const Input = ({ required, placeholder, type, value, className, onChange 
 }
 
 Input.propTypes = {
-      required: PropTypes.bool,
-      placeholder: PropTypes.string,
-      type: PropTypes.string,
-      value: PropTypes.string,
-      className: PropTypes.string,
-      onChange: PropTypes.func
+  required: PropTypes.bool,
+  placeholder: PropTypes.string,
+  type: PropTypes.string,
+  value: PropTypes.string,
+  className: PropTypes.string,
+  onChange: PropTypes.func,
 }

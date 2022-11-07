@@ -32,7 +32,7 @@ export const Slider = () => {
       auto()
     }
     return () => clearInterval(slideInterval)
-  }, [currentSlide]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [currentSlide])
 
   return (
     <div className="slider">
