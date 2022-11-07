@@ -1,4 +1,5 @@
 @import '../../variables';
+@import '../../App.scss';
 
 .btn {
   width: fit-content;
@@ -28,6 +29,16 @@
   &--large {
     padding: 16px 26px;
     font-size: 2rem;
+  }
+
+  &--black {
+    background: $dark-gray;
+    color: $white;
+    border: none;
+
+    &:hover {
+      letter-spacing: 2px;
+    }
   }
 
   &--white {
