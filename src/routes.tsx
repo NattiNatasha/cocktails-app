@@ -1,12 +1,12 @@
 import { CocktailPage } from './pages/CocktailPage'
-import { FavoritesPage } from './pages/FavoritesPage'
+import { FavouritesPage } from './pages/FavouritesPage'
 import { HistoryPage } from './pages/HistoryPage'
 import { NotFoundPage } from './pages/NotFoundPage'
 import { SignInPage } from './pages/SignInPage'
 import { SignUpPage } from './pages/SignUpPage'
 
 import {
-  FAVORITES_ROUTE,
+  FAVOURITES_ROUTE,
   HISTORY_ROUTE,
   SIGNIN_ROUTE,
   SIGNUP_ROUTE,
@@ -16,8 +16,8 @@ import {
 
 export const authRoutes = [
   {
-    path: FAVORITES_ROUTE,
-    element: <FavoritesPage />,
+    path: FAVOURITES_ROUTE,
+    element: <FavouritesPage />,
   },
   {
     path: HISTORY_ROUTE,
