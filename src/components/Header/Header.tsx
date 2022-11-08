@@ -12,12 +12,12 @@ export const Header = () => {
       </div>
       <div className="header__right">
         <Link to={SIGNIN_ROUTE}>
-          <Button size={'medium'} color={'black'}>
+          <Button size={'medium'} color={'black'} type="button">
             Sign in
           </Button>
         </Link>
         <Link to={SIGNUP_ROUTE}>
-          <Button size={'medium'} color={'black'}>
+          <Button size={'medium'} color={'black'} type="button">
             Sign up
           </Button>
         </Link>

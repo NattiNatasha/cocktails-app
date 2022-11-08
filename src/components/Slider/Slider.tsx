@@ -7,7 +7,6 @@ export const Slider = () => {
   const [currentSlide, setCurrentSlide] = useState(0)
   const slideLength = sliderData.length
 
-  const autoScroll = true
   let slideInterval: NodeJS.Timer
   let intervalTime = 5000
 
@@ -24,13 +23,7 @@ export const Slider = () => {
   }
 
   useEffect(() => {
-    setCurrentSlide(0)
-  }, [])
-
-  useEffect(() => {
-    if (autoScroll) {
-      auto()
-    }
+    auto()
     return () => clearInterval(slideInterval)
   }, [currentSlide])
 
