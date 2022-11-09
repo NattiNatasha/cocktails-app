@@ -1,0 +1,35 @@
+@import '../../variables';
+
+.container {
+  height: calc(100vh - 10rem);
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  flex: 1;
+}
+
+.nf {
+  max-width: 80rem;
+  flex: 1;
+  text-align: center;
+  padding: 6rem 4rem;
+
+  &__title {
+    font-size: 12vw;
+    line-height: 12vw;
+    color: $dark-gray;
+    text-shadow: 1px 1px 0px #0002, 1px 1px 0px #aaa, 2px 2px 0px #aaa,
+      3px 3px 0px #aaa, 4px 4px 0px #aaa, 5px 5px 0px #aaa, 6px 6px 0px #aaa,
+      7px 7px 0px #aaa, 8px 8px 0px #aaa, 9px 9px 0px #aaa, 10px 10px 0px #aaa,
+      11px 11px 0px #aaa, 12px 12px 0px #aaa, 13px 13px 0px #aaa,
+      14px 14px 0px #aaa, 15px 15px 0px #0009, 20px 20px 10px #0009;
+  }
+  &__text {
+    font-size: 30px;
+    color: $light-gray;
+    padding-bottom: 4rem;
+  }
+}

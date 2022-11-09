@@ -4,7 +4,9 @@ import { useGetStartCocktailsQuery } from '../../store/api/cocktailsApi'
 import './HomePage.scss'
 
 export const HomePage = () => {
-  const { data: startCocktails, isLoading, error } = useGetStartCocktailsQuery()
+  const { data: startCocktails, isLoading, error } = useGetStartCocktailsQuery(
+    '',
+  )
 
   return (
     <>
@@ -13,7 +15,7 @@ export const HomePage = () => {
       {error && <h1>Something went wrong...</h1>}
       <section className="cocktails">
         <div className="box-container">
-          {startCocktails?.drinks.map((cocktail) => (
+          {startCocktails?.map((cocktail) => (
             <CocktailCard key={cocktail.idDrink} data={cocktail} />
           ))}
         </div>
