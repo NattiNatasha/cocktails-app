@@ -8,15 +8,23 @@ export const cocktailsApi = createApi({
     baseUrl: COCKTAILS_BASE_URL,
   }),
   endpoints: (builder) => ({
-    getStartCocktails: builder.query<ICocktails, void>({
-      query: () => ({
-        url: '/search.php?s=',
+    getStartCocktails: builder.query<ICocktail[], void | string>({
+      query: (search: string | '') => ({
+        url: '/search.php',
+        params: {
+          s: search,
+        },
       }),
+      transformResponse: (response: ICocktails) => response.drinks,
     }),
-    getCocktailById: builder.query<ICocktail, string>({
-      query: (id) => ({
-        url: `/lookup.php?i=${id}`,
+    getCocktailById: builder.query<ICocktail, number>({
+      query: (id: number) => ({
+        url: '/lookup.php',
+        params: {
+          i: id,
+        },
       }),
+      transformResponse: (response: ICocktails) => response.drinks[0],
     }),
   }),
 })
