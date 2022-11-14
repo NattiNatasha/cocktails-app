@@ -1,33 +1,25 @@
-import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button } from '../Button'
 import { COCKTAIL_ROUTE } from '../../utils/consts'
-import { ICocktail } from '../../store/interfaces'
+import { NewFiltredCocktail } from '../../store/interfaces'
 
-interface Props {
-  data: ICocktail
-}
-
-export const CocktailCard: FC<Props> = ({ data }) => {
+export const CocktailCard = ({ data }: { data: NewFiltredCocktail }) => {
   let navigate = useNavigate()
   return (
     <div className="box">
       <div className="image">
-        <img src={data.strDrinkThumb} alt={data.strDrink} />
+        <img src={data.image} alt={data.name} />
       </div>
       <div className="box-wrapper">
         <div className="box__content">
-          <h3 className="box__title">Name: {data.strDrink}</h3>
-          <p>Category: {data.strCategory}</p>
-          <p>Type: {data.strAlcoholic}</p>
-          <p>Glass: {data.strGlass}</p>
+          <h3 className="box__title">Name: {data.name}</h3>
         </div>
         <div className="box__btn">
           <Button
             size={'small'}
             color={'black'}
             type="button"
-            onClick={() => navigate(COCKTAIL_ROUTE + '/' + data.idDrink)}
+            onClick={() => navigate(`${COCKTAIL_ROUTE}/${data.id}`)}
           >
             View recipe
           </Button>

@@ -16,7 +16,11 @@ const DEFAULT_SIZE = 'btn--medium'
 const DEFAULT_COLOR = 'btn--black'
 
 const SIZES = { medium: DEFAULT_SIZE, large: 'btn--large', small: 'btn--small' }
-const COLORS = { black: DEFAULT_COLOR, white: 'btn--white' }
+const COLORS = {
+  black: DEFAULT_COLOR,
+  white: 'btn--white',
+  orange: 'btn--orange',
+}
 
 export const Button = ({ children, type, onClick, size, color }: Props) => {
   const sizeClass = SIZES[size as keyof typeof SIZES] && DEFAULT_SIZE

@@ -1,0 +1,16 @@
+@import '../../variables';
+
+.filters-bar {
+  display: flex;
+  justify-content: center;
+  margin-top: 12rem;
+
+  .btn {
+    background: rgb(241, 189, 92);
+    color: $dark-gray;
+  }
+}
+
+.cocktails.search-results {
+  margin-top: 3rem;
+}

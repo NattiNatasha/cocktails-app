@@ -9,7 +9,7 @@ export const CocktailPage = () => {
   const navigate = useNavigate()
   const goBack = () => navigate(-1)
 
-  const { data, isLoading, error } = useGetCocktailByIdQuery(Number(id))
+  const { data, isLoading, isError } = useGetCocktailByIdQuery(Number(id))
 
   return (
     <div className="cocktail">
@@ -17,25 +17,25 @@ export const CocktailPage = () => {
         Go back
       </Button>
       {isLoading && <h1>Loading...</h1>}
-      {error && <h1>Something went wrong...</h1>}
+      {isError && <h1>Something went wrong...</h1>}
       {data && (
         <section className="cocktail-content">
           <div className="cocktail-content__img">
-            <img src={data.strDrinkThumb} alt={data.strDrink} />
+            <img src={data.image} alt={data.name} />
           </div>
           <div className="cocktail-content__description">
-            <h2>{data.strDrink}</h2>
+            <h2>{data.name}</h2>
             <p>
-              Category: <span>{data.strCategory}</span>
+              Category: <span>{data.category}</span>
             </p>
             <p>
-              Type: <span>{data.strAlcoholic}</span>
+              Type: <span>{data.type}</span>
             </p>
             <p>
-              Glass: <span>{data.strGlass}</span>
+              Glass: <span>{data.glass}</span>
             </p>
             <p>
-              Instructions: <span>{data.strInstructions}</span>
+              Instructions: <span>{data.instructions}</span>
             </p>
             <table className="table">
               <thead>
@@ -45,21 +45,12 @@ export const CocktailPage = () => {
                 </tr>
               </thead>
               <tbody>
-                {Object.keys(data).map((key) => {
-                  if (
-                    key.includes('Ingredient') &&
-                    data[key as keyof typeof data]
-                  ) {
+                {data.ingredients.map((ingredient, index) => {
+                  if (ingredient !== null) {
                     return (
-                      <tr key={key}>
-                        <td>{data[key as keyof typeof data]}</td>
-                        <td>
-                          {
-                            data[
-                              `strMeasure${key.slice(13)}` as keyof typeof data
-                            ]
-                          }
-                        </td>
+                      <tr key={ingredient}>
+                        <td>{ingredient}</td>
+                        <td>{data.measures[index]}</td>
                       </tr>
                     )
                   }

@@ -1,8 +1,20 @@
-export interface ICocktails {
-  drinks: ICocktail[]
+export interface Cocktails {
+  drinks: Cocktail[]
 }
 
-export interface ICocktail {
+export interface Categories {
+  drinks: Category[]
+}
+
+export interface Category {
+  strCategory: string
+}
+
+export interface NewCategory {
+  name: string
+}
+
+export interface Cocktail {
   idDrink: string
   strDrink: string
   strCategory: string
@@ -40,4 +52,41 @@ export interface ICocktail {
   strMeasure13: string | null
   strMeasure14: string | null
   strMeasure15: string | null
+}
+
+export interface FiltredCocktails {
+  drinks: FiltredCocktail[]
+}
+
+export interface FiltredCocktail {
+  idDrink: string
+  strDrink: string
+  strDrinkThumb: string
+}
+
+export interface NewFiltredCocktails {
+  data: NewFiltredCocktail[]
+}
+
+export interface NewFiltredCocktail {
+  id: string
+  name: string
+  image: string
+}
+
+export interface NewCocktails {
+  drinks: NewCocktail[]
+}
+
+export interface NewCocktail {
+  data: Cocktail
+  id: string
+  name: string
+  category: string
+  type: string
+  glass: string
+  image: string
+  instructions: string
+  ingredients: (string | null)[]
+  measures: (string | null)[]
 }

@@ -1,6 +1,17 @@
 @import '../../variables';
 @import '../../App.scss';
 
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 5rem;
+
+  .btn:last-child {
+    background: rgb(241, 189, 92);
+    color: $dark-gray;
+  }
+}
 .cocktails {
   display: flex;
   flex-direction: column;
