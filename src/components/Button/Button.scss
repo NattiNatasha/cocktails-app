@@ -41,6 +41,16 @@
     }
   }
 
+  &--orange {
+    background: rgb(241, 189, 92);
+    color: $dark-gray;
+    border: none;
+
+    &:hover {
+      letter-spacing: 2px;
+    }
+  }
+
   &--white {
     background: $white;
     color: $black;

@@ -25,7 +25,7 @@ export const Slider = () => {
   useEffect(() => {
     auto()
     return () => clearInterval(slideInterval)
-  }, [currentSlide])
+  }, [currentSlide]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="slider">

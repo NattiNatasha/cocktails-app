@@ -1,4 +1,5 @@
 import { CocktailPage } from './pages/CocktailPage'
+import { SearchPage } from './pages/SearchPage'
 import { FavouritesPage } from './pages/FavouritesPage'
 import { HistoryPage } from './pages/HistoryPage'
 import { NotFoundPage } from './pages/NotFoundPage'
@@ -12,6 +13,7 @@ import {
   SIGNUP_ROUTE,
   COCKTAIL_ROUTE,
   NOTFOUND_ROUTE,
+  SEARCH_ROUTE,
 } from './utils/consts'
 
 export const authRoutes = [
@@ -29,6 +31,10 @@ export const publicRoutes = [
   {
     path: COCKTAIL_ROUTE + '/:id',
     element: <CocktailPage />,
+  },
+  {
+    path: SEARCH_ROUTE,
+    element: <SearchPage />,
   },
   {
     path: NOTFOUND_ROUTE,
