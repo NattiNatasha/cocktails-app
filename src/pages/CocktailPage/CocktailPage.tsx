@@ -1,15 +1,26 @@
 import { useParams, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useGetCocktailByIdQuery } from '../../store/api/cocktailsApi'
 import { Button } from '../../components/Button'
+import { useActions } from '../../hooks/useActions'
+import { useAppSelector } from '../../hooks/useAppSelector'
+import { SIGNIN_ROUTE } from '../../utils/consts'
 import './CocktailPage.scss'
 
 export const CocktailPage = () => {
   const { id } = useParams()
+  const { email } = useAppSelector((state) => state.auth)
 
   const navigate = useNavigate()
   const goBack = () => navigate(-1)
 
   const { data, isLoading, isError } = useGetCocktailByIdQuery(Number(id))
+
+  const { addToFavourites } = useActions()
+
+  const addFavourite = () => {
+    addToFavourites(data!)
+  }
 
   return (
     <div className="cocktail">
@@ -60,6 +71,27 @@ export const CocktailPage = () => {
             </table>
           </div>
         </section>
+      )}
+      {email ? (
+        <Button
+          size={'large'}
+          color={'black'}
+          type="button"
+          onClick={addFavourite}
+        >
+          Add to favourites
+        </Button>
+      ) : (
+        <Link to={SIGNIN_ROUTE}>
+          <Button
+            size={'large'}
+            color={'black'}
+            type="button"
+            onClick={addFavourite}
+          >
+            Add to favourites
+          </Button>
+        </Link>
       )}
     </div>
   )

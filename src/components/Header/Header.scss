@@ -25,6 +25,23 @@
   &__right {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 2rem;
+
+    &-list {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      padding-left: 24rem;
+    }
+
+    &-link {
+      color: $dark-gray;
+      font-size: 2.4rem;
+
+      &:hover {
+        color: $light-gray;
+      }
+    }
   }
 }

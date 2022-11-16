@@ -1,0 +1,29 @@
+@import '../../variables';
+
+.auth-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex: 1;
+  background-color: $white;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+  padding: 5rem 0;
+
+  .auth__title {
+    color: $dark-gray;
+    font-size: 3rem;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+}

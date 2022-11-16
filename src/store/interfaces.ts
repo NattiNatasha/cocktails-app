@@ -90,3 +90,8 @@ export interface NewCocktail {
   ingredients: (string | null)[]
   measures: (string | null)[]
 }
+
+export interface User {
+  email: string | null
+  token: string | null
+}

@@ -4,11 +4,12 @@ import './Input.scss'
 
 export interface Props extends InputHTMLAttributes<HTMLInputElement> {
   required?: boolean
-  placeholder: string
+  placeholder?: string
+  name?: string
   type: string
   value?: string
   className: string
-  onChange?: React.FormEventHandler<HTMLInputElement>
+  onChange?: React.FormEventHandler<HTMLInputElement> | undefined
 }
 
 export const Input = ({
@@ -17,12 +18,14 @@ export const Input = ({
   type,
   value,
   className,
+  name,
   onChange,
 }: Props) => {
   return (
     <input
       required={required}
       placeholder={placeholder}
+      name={name}
       type={type}
       value={value}
       className={className}
@@ -34,6 +37,7 @@ export const Input = ({
 Input.propTypes = {
   required: PropTypes.bool,
   placeholder: PropTypes.string,
+  name: PropTypes.string,
   type: PropTypes.string,
   value: PropTypes.string,
   className: PropTypes.string,

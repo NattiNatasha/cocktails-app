@@ -6,10 +6,19 @@ import { useSearchCocktailsQuery } from '../../store/api/cocktailsApi'
 import { Logo } from '../Logo'
 import { Button } from '../Button'
 import { Search } from '../Search'
-import { SIGNIN_ROUTE, SIGNUP_ROUTE, COCKTAIL_ROUTE } from '../../utils/consts'
+import {
+  SIGNIN_ROUTE,
+  SIGNUP_ROUTE,
+  COCKTAIL_ROUTE,
+  FAVOURITES_ROUTE,
+  HISTORY_ROUTE,
+} from '../../utils/consts'
 import './Header.scss'
+import { useAppSelector } from '../../hooks/useAppSelector'
+import { useActions } from '../../hooks/useActions'
 
 export const Header = () => {
+  const { email } = useAppSelector((state) => state.auth)
   let navigate = useNavigate()
   const [search, setSearch] = useState('')
 
@@ -42,6 +51,13 @@ export const Header = () => {
     navigate(`${COCKTAIL_ROUTE}/${id}`)
   }
 
+  const { logout } = useActions()
+
+  const handleLogout = () => {
+    logout()
+    navigate(SIGNIN_ROUTE)
+  }
+
   return (
     <header className="header">
       <div className="header__left">
@@ -59,18 +75,45 @@ export const Header = () => {
           data={data}
         />
       </div>
-      <div className="header__right">
-        <Link to={SIGNIN_ROUTE}>
-          <Button size={'medium'} color={'black'} type="button">
-            Sign in
-          </Button>
-        </Link>
-        <Link to={SIGNUP_ROUTE}>
-          <Button size={'medium'} color={'black'} type="button">
-            Sign up
-          </Button>
-        </Link>
-      </div>
+      {!email ? (
+        <div className="header__right">
+          <Link to={SIGNIN_ROUTE}>
+            <Button size={'medium'} color={'black'} type="button">
+              Sign in
+            </Button>
+          </Link>
+          <Link to={SIGNUP_ROUTE}>
+            <Button size={'medium'} color={'black'} type="button">
+              Sign up
+            </Button>
+          </Link>
+        </div>
+      ) : (
+        <div className="header__right">
+          <ul className="header__right-list">
+            <li>
+              <Link to={FAVOURITES_ROUTE} className="header__right-link">
+                Favourites
+              </Link>
+            </li>
+            <li>
+              <Link to={HISTORY_ROUTE} className="header__right-link">
+                History
+              </Link>
+            </li>
+          </ul>
+          <Link to={SIGNIN_ROUTE}>
+            <Button
+              size={'medium'}
+              color={'black'}
+              type="button"
+              onClick={() => handleLogout()}
+            >
+              Sign out
+            </Button>
+          </Link>
+        </div>
+      )}
     </header>
   )
 }
