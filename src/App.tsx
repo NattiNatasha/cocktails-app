@@ -1,9 +1,12 @@
 import { Route, Routes } from 'react-router-dom'
-import { publicRoutes } from './routes'
-import { Layout } from './Layout'
+import { publicRoutes, authRoutes } from './routes'
+import { useAppSelector } from './hooks/useAppSelector'
 import { HomePage } from './pages/HomePage'
+import { Layout } from './Layout'
 
 function App() {
+  const { isAuth } = useAppSelector((state) => state.auth)
+
   return (
     <div className="wrapper">
       <Routes>
@@ -12,6 +15,10 @@ function App() {
           {publicRoutes.map(({ path, element }) => (
             <Route key={path} path={path} element={element} />
           ))}
+          {isAuth &&
+            authRoutes.map(({ path, element }) => (
+              <Route key={path} path={path} element={element} />
+            ))}
         </Route>
       </Routes>
     </div>

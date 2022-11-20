@@ -5,4 +5,7 @@ export const SIGNUP_ROUTE = '/signup'
 export const COCKTAIL_ROUTE = '/cocktail'
 export const SEARCH_ROUTE = '/search'
 export const NOTFOUND_ROUTE = '*'
+
 export const COCKTAILS_BASE_URL = 'https://www.thecocktaildb.com/api/json/v1/1'
+export const AUTH_BASE_URL = 'http://localhost:5000'
+export const BASE_URL = 'http://localhost:3000'

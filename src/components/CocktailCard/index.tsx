@@ -1,1 +1,1 @@
-export { CocktailCard } from './CocktailCard'
+export { CocktailCard as default } from './CocktailCard'

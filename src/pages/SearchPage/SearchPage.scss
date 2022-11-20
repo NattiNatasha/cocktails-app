@@ -3,12 +3,8 @@
 .filters-bar {
   display: flex;
   justify-content: center;
-  margin-top: 12rem;
-
-  .btn {
-    background: rgb(241, 189, 92);
-    color: $dark-gray;
-  }
+  margin-top: 14rem;
+  gap: 3rem;
 }
 
 .cocktails.search-results {

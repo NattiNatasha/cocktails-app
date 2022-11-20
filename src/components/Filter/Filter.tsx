@@ -11,7 +11,7 @@ interface Props {
 export const Filter = (props: Props) => {
   return (
     <div className="filter">
-      <Button type="button" color={'black'} size={'medium'}>
+      <Button type="button" color="black" size="large">
         {props.title}
       </Button>
       <div className="filter__content">
