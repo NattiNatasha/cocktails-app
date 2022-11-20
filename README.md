@@ -1,46 +1,50 @@
-# Getting Started with Create React App
+![slide_one](https://user-images.githubusercontent.com/93675664/202900859-a2a20bc0-8ef7-4916-8173-fcc6b5d28886.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Cocktails App
 
-## Available Scripts
+## **Commands**:
 
-In the project directory, you can run:
+- npm start (front)
+- npm run auth (server: authorization & share in telegram)
+- npm run sb (storybook)
 
-### `npm start`
+## _Test data for login_:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- email: test@gmail.com
+- password: 123456
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## _Test search requests_:
 
-### `npm test`
+- gin;
+- margarita
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## **1 уровень (необходимый минимум)**
 
-### `npm run build`
+- Реализованы Требования к функциональности, описанные в прикрепленном документе.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## React
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Пишем функциональные компоненты c хуками в приоритете над классовыми: [Pages](https://github.com/NattiNatasha/cocktails-app/tree/main/src/pages), [Components](https://github.com/NattiNatasha/cocktails-app/tree/main/src/components)
+- Есть четкое разделение на умные и глупые компоненты. Пример умного: [SearchPage](https://github.com/NattiNatasha/cocktails-app/tree/main/src/pages/SearchPage), пример глупого: [CocktailCard](https://github.com/NattiNatasha/cocktails-app/blob/main/src/components/CocktailCard/CocktailCard.tsx)
+- Есть рендеринг списков: [App](https://github.com/NattiNatasha/cocktails-app/blob/main/src/App.tsx), [HomePage](https://github.com/NattiNatasha/cocktails-app/blob/main/src/pages/HomePage/HomePage.tsx), [FavouritesPage](https://github.com/NattiNatasha/cocktails-app/blob/main/src/pages/FavouritesPage/FavouritesPage.tsx), [HistoryPage](https://github.com/NattiNatasha/cocktails-app/blob/main/src/pages/HistoryPage/HistoryPage.tsx)
+- Реализована хотя бы одна форма: [SignInPage](https://github.com/NattiNatasha/cocktails-app/blob/main/src/pages/SignInPage/SignInPage.tsx), [SignUpPage](https://github.com/NattiNatasha/cocktails-app/blob/main/src/pages/SignUpPage/SignUpPage.tsx)
+- Есть применение Контекст API: [TelegramContext](https://github.com/NattiNatasha/cocktails-app/tree/main/src/context), [CocktailPage](https://github.com/NattiNatasha/cocktails-app/blob/main/src/pages/CocktailPage/CocktailPage.tsx)
+- Есть применение предохранителя: [HomePage](https://github.com/NattiNatasha/cocktails-app/blob/main/src/pages/CocktailPage/CocktailPage.tsx)
+- Есть хотя бы один кастомный хук: [hooks](https://github.com/NattiNatasha/cocktails-app/tree/main/src/hooks)
+- Хотя бы несколько компонентов используют PropTypes: [Button](https://github.com/NattiNatasha/cocktails-app/blob/main/src/components/Button/Button.tsx), [Input](https://github.com/NattiNatasha/cocktails-app/blob/main/src/components/Input/Input.tsx)
+- Поиск не должен триггерить много запросов к серверу: [хук useDebounce](https://github.com/NattiNatasha/cocktails-app/blob/main/src/hooks/useDebounce.ts)
+- Есть применение lazy + Suspense: [HomePage](https://github.com/NattiNatasha/cocktails-app/blob/main/src/pages/CocktailPage/CocktailPage.tsx)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Redux
 
-### `npm run eject`
+- Используем Modern Redux with Redux Toolkit
+- Используем слайсы: [slices](https://github.com/NattiNatasha/cocktails-app/tree/main/src/store/slices)
+- Есть хотя бы одна кастомная мидлвара: [loggerMiddleware](https://github.com/NattiNatasha/cocktails-app/blob/main/src/loggerMiddleware.js)
+- Используется RTK Query: [api](https://github.com/NattiNatasha/cocktails-app/tree/main/src/store/api)
+- Используется Transforming Responses: [cocktailsApi](https://github.com/NattiNatasha/cocktails-app/blob/main/src/store/api/cocktailsApi.ts)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## **2 уровень (необязательный)**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Использование TypeScript
+- Подключен storybook и созданы несколько сторисов: [Button](https://github.com/NattiNatasha/cocktails-app/blob/main/src/components/Button/Button.stories.tsx)
+- Реализована фича “Поделиться в телеграм”, закрытая под фича флагом: [server](https://github.com/NattiNatasha/cocktails-app/blob/main/server/server.js), [CocktailCard](https://github.com/NattiNatasha/cocktails-app/blob/main/src/pages/CocktailPage/CocktailPage.tsx)
