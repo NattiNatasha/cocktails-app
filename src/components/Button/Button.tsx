@@ -23,8 +23,8 @@ const COLORS = {
 }
 
 export const Button = ({ children, type, onClick, size, color }: Props) => {
-  const sizeClass = SIZES[size as keyof typeof SIZES] && DEFAULT_SIZE
-  const colorClass = COLORS[color as keyof typeof COLORS] && DEFAULT_COLOR
+  const sizeClass = SIZES[size as keyof typeof SIZES] || DEFAULT_SIZE
+  const colorClass = COLORS[color as keyof typeof COLORS] || DEFAULT_COLOR
 
   return (
     <button

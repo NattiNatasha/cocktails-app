@@ -1,0 +1,35 @@
+@import '../../variables';
+
+.cocktails.favourites {
+  margin-top: 10rem;
+}
+
+.no-favourites {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+  margin: 0 auto;
+  padding: 60px;
+
+  &__title {
+    padding-top: 20px;
+    color: $light-gray;
+    font-size: 2rem;
+  }
+  &__img {
+    margin: 0 auto;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    & img {
+      width: 15rem;
+      margin: 0 auto;
+      padding-bottom: 3rem;
+    }
+  }
+}

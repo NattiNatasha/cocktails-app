@@ -1,13 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { LS_FAV_KEY } from '../../utils/consts'
 import { NewCocktail } from '../interfaces'
 
-interface Favourites {
+interface FavouritesState {
   favourites: NewCocktail[]
 }
 
-const initialState: Favourites = {
-  favourites: JSON.parse(localStorage.getItem(LS_FAV_KEY) ?? '[]'),
+const initialState: FavouritesState = {
+  favourites: [],
 }
 
 export const favouritesSlice = createSlice({
@@ -20,10 +19,17 @@ export const favouritesSlice = createSlice({
       )
       if (!findItem) {
         state.favourites.push({ ...action.payload })
-        localStorage.setItem(LS_FAV_KEY, JSON.stringify(state.favourites))
       } else {
         alert('Already is in favourites')
       }
+    },
+    removeFromFavourites(state, action: PayloadAction<string | undefined>) {
+      state.favourites = state.favourites.filter(
+        (obj) => obj.id !== action.payload,
+      )
+    },
+    clearFavourites(state) {
+      state.favourites = []
     },
   },
 })

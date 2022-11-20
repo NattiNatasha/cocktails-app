@@ -7,11 +7,12 @@ interface Props {
   search: string
   onChange: React.FormEventHandler<HTMLInputElement> | undefined
   isDropdownOpen: boolean
-  gotoSearchPage: () => void
-  isLoading: boolean
-  isError: boolean
+  gotoSearchPage?: () => void
+  isLoading?: boolean
+  isError?: boolean
   searchCocktailHandler: (id: string) => void
   data: NewCocktail[] | undefined
+  showButton: boolean
 }
 
 export const Search = (props: Props) => {
@@ -24,14 +25,16 @@ export const Search = (props: Props) => {
         className={'input--large'}
         onChange={props.onChange}
       />
-      <Button
-        size={'medium'}
-        color={'black'}
-        type="button"
-        onClick={props.gotoSearchPage}
-      >
-        Search
-      </Button>
+      {props.showButton && (
+        <Button
+          size="medium"
+          color="orange"
+          type="button"
+          onClick={props.gotoSearchPage}
+        >
+          Search
+        </Button>
+      )}
       {props.isDropdownOpen && (
         <ul className="dropdown">
           {props.isLoading && <p>Loading...</p>}

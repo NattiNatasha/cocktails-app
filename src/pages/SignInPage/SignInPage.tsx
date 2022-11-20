@@ -28,9 +28,10 @@ export const SignInPage = () => {
     setFormValue({ ...formValue, [e.target.name]: e.target.value })
   }
 
-  const handleLogin = async () => {
+  const submitHandler = (event: React.FormEvent) => {
+    event.preventDefault()
     if (email && password) {
-      await loginUser({ email, password })
+      loginUser({ email, password })
     } else {
       alert('Please, fill out all fields')
     }
@@ -38,8 +39,8 @@ export const SignInPage = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      setUser({ email: data?.email!, token: data?.token! })
-      navigate('/')
+      setUser({ email: data?.email!, token: data?.token!, isAuth: true })
+      navigate(-1)
     }
     if (isError) {
       alert((error as any).data.message)
@@ -50,13 +51,13 @@ export const SignInPage = () => {
     <>
       <div className="auth-page">
         <h1 className="auth__title">SIGN IN</h1>
-        <form>
+        <form onSubmit={submitHandler}>
           <Input
             placeholder="e-mail"
             name="email"
             type="e-mail"
             value={email}
-            className={'input--medium'}
+            className="input--medium"
             onChange={handleChange}
           />
           <Input
@@ -64,15 +65,10 @@ export const SignInPage = () => {
             name="password"
             type="password"
             value={password}
-            className={'input--medium'}
+            className="input--medium"
             onChange={handleChange}
           />
-          <Button
-            size={'large'}
-            color={'black'}
-            type="button"
-            onClick={() => handleLogin()}
-          >
+          <Button size="large" color="orange" type="submit">
             SIGN IN
           </Button>
         </form>

@@ -1,37 +1,30 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { USER_KEY } from '../../utils/consts'
+
 export interface AuthState {
-  email: string | null
-  token: string | null
+  email: string
+  token: string
+  isAuth: boolean
 }
 
 const initialState: AuthState = {
-  email: null,
-  token: null,
+  email: '',
+  token: '',
+  isAuth: false,
 }
 
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setUser: (
-      state,
-      action: PayloadAction<{ email: string; token: string }>,
-    ) => {
-      localStorage.setItem(
-        USER_KEY,
-        JSON.stringify({
-          email: action.payload.email,
-          token: action.payload.token,
-        }),
-      )
+    setUser: (state, action: PayloadAction<AuthState>) => {
       state.email = action.payload.email
       state.token = action.payload.token
+      state.isAuth = Boolean(action.payload.token)
     },
     logout: (state) => {
-      localStorage.clear()
-      state.email = null
-      state.token = null
+      state.email = ''
+      state.token = ''
+      state.isAuth = false
     },
   },
 })

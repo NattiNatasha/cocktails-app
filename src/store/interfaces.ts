@@ -79,7 +79,7 @@ export interface NewCocktails {
 }
 
 export interface NewCocktail {
-  data: Cocktail
+  data: Cocktail | undefined
   id: string
   name: string
   category: string

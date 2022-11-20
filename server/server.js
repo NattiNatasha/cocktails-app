@@ -88,4 +88,8 @@ server.post('/api/auth/login', (req, res) => {
   res.status(200).json({ email, token })
 })
 
+server.get('/api/feature-flag', (req, res) => {
+  res.status(200).json({ isTelegramShareEnabled: true })
+})
+
 server.listen(5000)

@@ -25,9 +25,10 @@ export const SignUpPage = () => {
     { data, isSuccess, isError, error },
   ] = useRegisterUserMutation()
 
-  const handleRegister = async () => {
+  const submitHandler = (event: React.FormEvent) => {
+    event.preventDefault()
     if (email && password) {
-      await registerUser({ email, password })
+      registerUser({ email, password })
     } else {
       alert('Please, fill out all fields')
     }
@@ -35,7 +36,7 @@ export const SignUpPage = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      setUser({ email: data?.email!, token: data?.token! })
+      setUser({ email: data?.email!, token: data?.token!, isAuth: true })
       navigate('/')
     }
     if (isError) {
@@ -47,7 +48,7 @@ export const SignUpPage = () => {
     <>
       <div className="auth-page">
         <h1 className="auth__title">SIGN UP</h1>
-        <form>
+        <form onSubmit={submitHandler}>
           <Input
             placeholder="e-mail"
             name="email"
@@ -64,12 +65,7 @@ export const SignUpPage = () => {
             className={'input--medium'}
             onChange={handleChange}
           />
-          <Button
-            size={'large'}
-            color={'black'}
-            type="button"
-            onClick={() => handleRegister()}
-          >
+          <Button size="large" color="orange" type="submit">
             SIGN UP
           </Button>
         </form>
